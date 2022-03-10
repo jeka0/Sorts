@@ -82,7 +82,8 @@ public class Sorts {
     public static void quickSort2(Object[] mas,Result result)
     {
         if(mas.length==0 || mas.length==1)return;
-        int middle= (mas.length-1)/3, mid2 = mas.length-middle-1;
+        Random random = new Random();
+        int middle= random.nextInt(mas.length), mid2 = random.nextInt(mas.length);
         Object opora = mas[middle],opora2 = mas[mid2];
         if(mas[0] instanceof Character && (char)opora > (char)opora2||mas[0] instanceof Integer && (int)opora > (int)opora2)
         {
