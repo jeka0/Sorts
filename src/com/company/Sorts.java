@@ -1,5 +1,8 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Sorts {
     public static Result InclusionSort(Object[] mas)
     {
@@ -71,9 +74,49 @@ public class Sorts {
         Result result = new Result(mas);
         if(mas.length!=0)
         {
-            quickSort(result, 0,result.resultMas.length-1);
+            //quickSort(result, 0,result.resultMas.length-1);
+            quickSort2(result.resultMas, result);
         }
         return result;
+    }
+    public static void quickSort2(Object[] mas,Result result)
+    {
+        if(mas.length==0 || mas.length==1)return;
+        int middle= (mas.length-1)/3, mid2 = mas.length-middle-1;
+        Object opora = mas[middle],opora2 = mas[mid2];
+        if(mas[0] instanceof Character && (char)opora > (char)opora2||mas[0] instanceof Integer && (int)opora > (int)opora2)
+        {
+            Object temp = opora2;
+            opora2 = opora;
+            opora = temp;
+        }
+        ArrayList<Object> lowMas = new ArrayList<>(),middleMas = new ArrayList<>(),highMas = new ArrayList<>();
+        int j =0;
+        for(Object item:mas)
+        {
+            result.numberСomp++;
+            if(item instanceof Character && (char)item <= (char)opora||item instanceof Integer && (int)item <= (int)opora){if(j>middle)result.numberPerm++;lowMas.add(item);}
+            else if(item instanceof Character && (char)item >= (char)opora2||item instanceof Integer && (int)item >= (int)opora2){if(j<mid2)result.numberPerm++;highMas.add(item);}
+            else {if(j<middle||j>mid2)result.numberPerm++;middleMas.add(item);}
+            j++;
+        }
+        Object[] lowM = lowMas.toArray(), highM = highMas.toArray(),middleM = middleMas.toArray();
+        if(!lowMas.isEmpty()&&!comp(lowM))quickSort2(lowM,result);
+        if(!highMas.isEmpty()&&!comp(highM))quickSort2(highM,result);
+        if(!middleMas.isEmpty()&&!comp(middleM))quickSort2(middleM,result);
+        int i = 0;
+        for(Object item: lowM) {mas[i]=item;i++;}
+        for(Object item: middleM) {mas[i]=item;i++;}
+        for(Object item: highM) {mas[i]=item;i++;}
+    }
+    public static boolean comp(Object[] mas)
+    {
+        Object def = mas[0];
+        for(Object item: mas)
+        {
+            if(item instanceof Character && (char)item!=(char)def||item instanceof Integer && (int)item!=(int)def)return false;
+        }
+        return true;
     }
     public static void quickSort(Result result, int low, int high) {
 

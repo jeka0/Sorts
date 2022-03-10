@@ -11,11 +11,11 @@ public class Main {
         Object[] mas = new Object[count];
         FillMas(mas,Console.ChooseType());
         Console.ShowMas(mas, "Сгенерированный массив:");
-        Console.PrintResult(Sorts.InclusionSort(mas),"Резудьтат сортировки включением:");
-        Console.PrintResult(Sorts.SelectionSort(mas),"Резудьтат сортировки выбором:");
-        Console.PrintResult(Sorts.ShakerSort(mas),"Резудьтат шейкерной сортировки:");
-        Console.PrintResult(Sorts.QuickSort(mas),"Резудьтат быстрой сортировки Хоара :");
-        Console.PrintResult(Sorts.HeapSort(mas),"Резудьтат пирамидальной сортировки:");
+        Console.PrintResult(Sorts.InclusionSort(mas),"Результат сортировки включением:");
+        Console.PrintResult(Sorts.SelectionSort(mas),"Результат сортировки выбором:");
+        Console.PrintResult(Sorts.ShakerSort(mas),"Результат шейкерной сортировки:");
+        Console.PrintResult(Sorts.QuickSort(mas),"Результат быстрой сортировки Хоара :");
+        Console.PrintResult(Sorts.HeapSort(mas),"Результат пирамидальной сортировки:");
     }
     public static void FillMas(Object[] mas, int type)
     {
